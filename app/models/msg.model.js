@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const MsgSchema = mongoose.Schema({
-    title: String,
+    name: String,
     content: String
 }, {
     timestamps: true

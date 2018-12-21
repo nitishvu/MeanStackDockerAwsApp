@@ -15,4 +15,16 @@ module.exports = (app) => {
 
     // Delete a msg with msgId
     app.delete('/msgs/:msgId', msgs.delete);
+
+    app.get('/',msgs.homepage);
+
+       /* msgs.findAll.toArray((err, result) => {
+            if (err) return console.log(err)
+            // renders index.ejs
+            res.render('index.ejs', {quotes: result})
+          })
+        //res.sendFile(__dirname + '/index.html')
+        //res.json({"message": "Welcome to Easymsgs application. Take msgs quickly. Organize and keep track of all your msgs."});
+        */
+   
 }

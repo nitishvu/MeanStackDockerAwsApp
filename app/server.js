@@ -6,11 +6,15 @@ const bodyParser = require('body-parser');
 // create express app
 const app = express();
 
+
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }))
 
 // parse requests of content-type - application/json
 app.use(bodyParser.json())
+app.set('view engine', 'ejs')
+app.use(express.static('public'))
+
 
 
 // Configuring the database
@@ -31,9 +35,7 @@ mongoose.connect(dbConfig.url, {
 });
 
 // define a simple route
-app.get('/', (req, res) => {
-    res.json({"message": "Welcome to Easymsgs application. Take msgs quickly. Organize and keep track of all your msgs."});
-});
+
 
 // Require Msgs routes
 require('./routes/msg.routes.js')(app);

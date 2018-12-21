@@ -4,7 +4,7 @@ const Msg = require('../models/msg.model.js');
 exports.create = (req, res) => {
 
      // Validate request
-     console.log(req.body.content,req.body.title);
+     console.log(req.body.content,req.body.name);
      if(!req.body.content) {
         return res.status(400).send({
             message: "Msg content can not be empty"
@@ -13,14 +13,17 @@ exports.create = (req, res) => {
 
     // Create a Msg
     const msg = new Msg({
-        title: req.body.title || "Untitled Msg", 
+        name: req.body.name || "Unnamed Msg", 
         content: req.body.content
     });
 
     // Save Msg in the database
     msg.save()
     .then(data => {
-        res.send(data);
+        //res.send(data);
+        console.log(data+'saved to database')
+        res.redirect('/')
+
     }).catch(err => {
         res.status(500).send({
             message: err.message || "Some error occurred while creating the Msg."
@@ -35,6 +38,22 @@ exports.findAll = (req, res) => {
     Msg.find()
     .then(msgs => {
         res.send(msgs);
+    }).catch(err => {
+        res.status(500).send({
+            message: err.message || "Some error occurred while retrieving msgs."
+        });
+    });
+
+};
+
+exports.homepage = (req, res) => {
+
+    Msg.find()
+    .then(msgs => {
+        //console.log(msgs)
+        //res.send(msgs);
+        res.render('index.ejs', {msgs: msgs})
+
     }).catch(err => {
         res.status(500).send({
             message: err.message || "Some error occurred while retrieving msgs."
@@ -79,7 +98,7 @@ exports.update = (req, res) => {
 
     // Find Msg and update it with the request body
     Msg.findByIdAndUpdate(req.params.MsgId, {
-        title: req.body.title || "Untitled Msg",
+        name: req.body.name || "Unnamed Msg",
         content: req.body.content
     }, {new: true})
     .then(msg => {
