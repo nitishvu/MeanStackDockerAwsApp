@@ -1,9 +1,8 @@
-
-
 FROM node:8
 
 # install dependencies
 WORKDIR /opt/app
+
 COPY package.json package-lock.json* ./
 RUN npm cache clean --force && npm install
 
@@ -23,7 +22,4 @@ CMD [ "npm", "run", "start" ]
 #docker logs
 #docker build -f mongoDocfile -t mongodb .
 #docker build -f Dockerfile -t msgapp .
-#docker images -a  |awk '{print $3}' |xargs docker rmi --force
-#docker-compose up -d
-#docker-compose ps
-# docker-compose rm
+#

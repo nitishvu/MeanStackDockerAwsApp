@@ -1,3 +1,3 @@
 module.exports = {
-    url: 'mongodb://localhost:1521/easy-msgs'
+    url: 'mongodb://mongodb:27017/easy-msgs'
 }
