@@ -27,3 +27,8 @@ COPY . .
 
 EXPOSE 8080
 CMD [ "npm", "start" ]
+
+
+
+  136  git remote add origin https://github.com/nitishvu/MeanStackDockerAwsApp.git
+  137  git push -u origin master
