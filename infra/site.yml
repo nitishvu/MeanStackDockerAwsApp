@@ -7,7 +7,7 @@
      - createEc2Instnace
       
 - name: copy code to AWS instance
-  hosts: webserver
+  hosts: "webserver"
   #connection: local
   gather_facts: False
   remote_user: ubuntu

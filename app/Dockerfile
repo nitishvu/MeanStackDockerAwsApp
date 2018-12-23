@@ -17,7 +17,7 @@ EXPOSE 80
 
 CMD [ "npm", "run", "start" ]
 
-
+#export ANSIBLE_HOST_KEY_CHECKING=False
 #docker build -t msgapp .
 #docker run -p 3000:80 -d msgapp
 #docker logs
