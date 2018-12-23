@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 // parse requests of content-type - application/json
 app.use(bodyParser.json())
-app.set('view engine', 'ejs')
+
 app.use(express.static('public'))
 
 
@@ -36,6 +36,14 @@ mongoose.connect(dbConfig.url, {
 
 // define a simple route
 
+
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/index.html')
+});
+
+      
+       
+     
 
 // Require Msgs routes
 require('./routes/msg.routes.js')(app);

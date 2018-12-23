@@ -22,7 +22,10 @@ exports.create = (req, res) => {
     .then(data => {
         //res.send(data);
         console.log(data+'saved to database')
-        res.redirect('/')
+        res.status(200).send({
+            message: "Message saved to database"
+        });
+        //res.redirect('/')
 
     }).catch(err => {
         res.status(500).send({
@@ -65,6 +68,7 @@ exports.homepage = (req, res) => {
 // Find a single msg with a msgId
 exports.findOne = (req, res) => {
 
+//console.log("find one = "+req.params.msgId); 
     Msg.findById(req.params.msgId)
     .then(msg => {
         if(!msg) {
@@ -97,7 +101,8 @@ exports.update = (req, res) => {
     }
 
     // Find Msg and update it with the request body
-    Msg.findByIdAndUpdate(req.params.MsgId, {
+    console.log("update id ="+req.params.msgId);
+    Msg.findByIdAndUpdate(req.params.msgId, {
         name: req.body.name || "Unnamed Msg",
         content: req.body.content
     }, {new: true})

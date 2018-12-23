@@ -1,0 +1,8 @@
+- name: copy code to ec2 instance
+  debug:
+    var: app_code
+ 
+- copy:
+      src: "{{app_code}}"
+      dest: "/tmp/"
+  

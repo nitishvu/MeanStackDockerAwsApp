@@ -1,27 +1,35 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="main.js"></script>
-</body>
+<link rel="stylesheet" href="main.css"> 
+<body>
+
+    <ul class="actions">
+      <li class="createmsg">create message</li>
+      <li class="listmsg">list messages</li>
+    </ul>
+  
+
 
 <ul class="msgs">
     <% for(var i=0; i<msgs.length; i++) {%>
-      <li class="msgs">
-        <span><%= msgs[i].name %></span>
-        <p><span><%= msgs[i].content %></span></p>
+      <div><li class="msgs">
+        <div class="msg">
+        <button id="name<%=i %>"><%= msgs[i].name %></button>
+        <p class="content" id ="content">Details:<%= msgs[i].content %></p></div>
       </li>
+      </div>
     <% } %>
   </ul>
 
+  <div class="createmsgview">
   <form action="/msgs" method="POST">
     <input type="text" placeholder="name" name="name">
     <input type="text" placeholder="content" name="content">
     <button type="submit">Submit</button>
   </form>
+</div>
 
-  <div>
-    <h2>Replace last quote written by Master Yoda with a quote written by Darth Vadar</h2>
-    <button id="update"> Darth Vadar invades! </button>
-  </div>
 
-  <div>
-    <h2>Delete Darth Vadar's first quote</h2>
-    <button id="delete"> Delete first Darth Vadar quote </button>
-  </div>
+
+</body>

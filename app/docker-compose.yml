@@ -2,18 +2,11 @@ version : '2'
 
 services:
 
-  nodejs:
-    build:
-      context: .
-      dockerfile: nodejsdocker
-    image: webapp:tag
-    ports:
-      - 80:80
+
     
 #    depends_on:
 #      - mongodb
-    links:
-      - mongodb
+
 
   mongodb:
     build:
@@ -22,3 +15,13 @@ services:
     image: webdb:tag
     ports:
       - 27017:27017
+
+  nodejs:
+    build:
+      context: .
+      dockerfile: nodejsdocker
+    image: webapp:tag
+    ports:
+      - 80:80
+    links:
+      - mongodb

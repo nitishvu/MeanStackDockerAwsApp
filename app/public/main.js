@@ -1,5 +1,22 @@
-var update = document.getElementById('update')
+$(document).ready(function() {
 
-update.addEventListener('click', function () {
-  // Send PUT Request here
-})
+  clicked= false;
+
+
+$( ".createmsg" ).click(function() {
+  
+});
+
+$( ".msg" ).click(function() {
+
+
+ 
+  $(this).find('.content').toggle();
+  
+
+
+});
+
+});
+
+
