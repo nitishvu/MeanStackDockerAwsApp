@@ -60,8 +60,17 @@
               line="{{ item.public_ip }} {{hoststring}}"
               state=present
   with_items: "{{ ec2.instances }}"
+  
+
+- name: add host to multiple groups
+  add_host:
+    hostname: "{{ item.public_ip }}"
+    groups:
+      - webserver
+  with_items: "{{ ec2.instances }}"
 
 - wait_for: path={{ hostpath }} search_regex={{hoststring}}
+
 
 - name: Wait for SSH to come up
   local_action: wait_for 
@@ -69,3 +78,13 @@
                 port=22 
                 state=started
   with_items:  "{{ ec2.instances }}"
+- name: install python in ec2 instaces 
+  command: " ssh -i ../../aws-private.pem  -o StrictHostKeyChecking=no ubuntu@{{item.public_ip}} \" sudo ln -s /usr/bin/python3 /usr/bin/python;sudo apt update \" "
+  with_items:  "{{ ec2.instances }}"
+  register: myoutput
+
+
+
+
+
+    

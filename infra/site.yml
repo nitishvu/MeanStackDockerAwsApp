@@ -6,9 +6,8 @@
   roles:
      - createEc2Instnace
       
-- name: copy code to AWS instance
+- name: server config
   hosts: "webserver"
-  #connection: local
   gather_facts: False
   remote_user: ubuntu
   roles:

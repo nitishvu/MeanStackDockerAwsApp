@@ -27,3 +27,7 @@ CMD [ "npm", "run", "start" ]
 #docker-compose up -d
 #docker-compose ps
 # docker-compose rm
+#You can do it either in the /etc/ansible/ansible.cfg or ~/.ansible.cfg file:
+
+#[defaults]
+#host_key_checking = False

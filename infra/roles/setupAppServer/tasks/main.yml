@@ -1,21 +1,47 @@
 - name: copy code to ec2 instance
   debug:
     var: app_code
-- name: install python
-  raw: 'sudo apt-get -y install python'
 
-- name: configure node
-  shell: |
-    sudo apt update -y
-    sudo apt  install docker.io -y
-    sudo apt  install docker-compose -y
-    sudo usermod -aG docker ubuntu
-    sudo service docker start
-    sudo apt install git -y
-    git clone https://github.com/nitishvu/MeanStackDockerAwsApp.git
-    cd ~/MeanStackDockerAwsApp/app
-    docker-compose up --build -d      
-    exit 0
+#- name: python link
+#  raw: 'ln -s /usr/bin/python3 /usr/bin/python'
+#  become: true
+#  ignore_errors: true
+- name: apt update
+  shell: "apt update"
+  become: true
+  
+
+- name: Install a list of packages
+  apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+   
+    - docker.io
+    - docker-compose
+    - git
+  become: true
+- name: update node 
+  shell: apt update -y
+  become: true
+- name: start docker service
+  service:
+    name: docker
+    state: started
+  become: true
+
+- name: get app code from github
+  git:
+    repo: "https://github.com/nitishvu/MeanStackDockerAwsApp.git"
+    dest: "~/MeanStackDockerAwsApp"
+    update: no
+    clone: yes
+
+- name: create and start docker application
+  shell:  " cd /home/ubuntu/MeanStackDockerAwsApp/app ; docker-compose up  -d" 
+  become: true  
+ 
+    
 
 
 
