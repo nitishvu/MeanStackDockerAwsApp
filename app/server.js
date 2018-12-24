@@ -49,6 +49,21 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html')
 });
 
+app.get('/palindrome/:str', (req, res) => {
+    var pstr = req.params.str
+    var len = pstr.length;
+    var mid = Math.floor(len/2);
+
+    for ( var i = 0; i < mid; i++ ) {
+        if (pstr[i] !== pstr[len - 1 - i]) {
+            res.status(400).send({ message: 'invalid string supplied' });
+        }
+    }
+
+   
+    res.status(200).send({ message: 'given string is palindrome' });
+});
+
       
        
      
