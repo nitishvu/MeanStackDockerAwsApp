@@ -1,12 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <name>MY APP</name>
+<meta charset="utf-8"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  
+    $.getJSON("http://vunitish.tk/msgs", function(result){
+      $.each(result, function(i, field){
+        str = "<div id=\"msgBox\">";
+        str += "<a>Message Name:  "+field.name+"</a>";
+        str += "<p>Message Content: </br> </br>"+field.content+"</p>";
+        str +="</div>";
+        $("#messages").append(str);
+      });
+    });
+  
+});
+</script>
 </head>
 <body>
-  May Node and Express Home Page.
 
- 
+
+<div id = "messages">
+    
+</div>
+<style>
+        #msgBox {
+          border-style: solid;
+          border-width: 5px;
+          border-color: blue;
+          display: grid;
+        }
+        a{
+            border-bottom: blue;
+        border-style: inset;
+        border-top: none;
+         border-left: none;
+        border-right: none;
+
+}
+        }
+</style>        
 </body>
 </html>
