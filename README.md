@@ -1,6 +1,12 @@
 
 # MeanStackDockerAwsApp
 
+WorkStation Prequesites:
+instal below packages
+	Python3
+	pyboto3
+	ansible
+
 
 Welcome to the MeanStackDockerAwsApp wiki!
 
