@@ -23,11 +23,9 @@ Welcome to the MeanStackDockerAwsApp wiki!
  keypair: nitish-ec2 # pem file name
  ami: ami-0d773a3b7bb2bb1c1  # Ubuntu 18.04 LTS
  project_name: meanapp
- env: staging
  app_code_user: "ubuntu" # remote user
  hoststring: "ansible_ssh_user=ubuntu ansible_ssh_private_key_file=../../aws-private.pem"
  hostpath: "{{playbook_dir}}/hosts"
- app_code: "/tmp/MeanStackDockerAwsApp/app"
  git_cmd: "git clone https://github.com/nitishvu/MeanStackDockerAwsApp.git"
  ```
 
