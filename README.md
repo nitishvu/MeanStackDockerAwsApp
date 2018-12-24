@@ -45,7 +45,26 @@ Welcome to the MeanStackDockerAwsApp wiki!
 # API Documentation
 
 
-1)  Get all messages
+1) Palindrom Check
+
+   Example Request:
+   
+   curl --location --request GET "vunitish.tk/palindrome/liril"
+   
+   Sample Output:
+   
+```   
+   {
+    "message": "given string is palindrome"
+   }
+
+```
+
+ Error Code:
+   400:  message: 'invalid string supplied'
+   
+
+2)  Get all messages
 
 
     Example Request:
@@ -84,7 +103,7 @@ Welcome to the MeanStackDockerAwsApp wiki!
 ]
 ```
 
-2) Add message
+3) Add message
 
 
     Headers:
@@ -116,7 +135,7 @@ curl --location --request POST "http://vunitish.tk/msgs" \
     "message": "Message saved to database"
     }
 
-3) Find a message
+4) Find a message
 
      Headers:
 
@@ -141,7 +160,7 @@ sample output:
 }
 ```
 
-4) Update message:
+5) Update message:
 
     Headers:
 
@@ -186,7 +205,7 @@ sample output:
 ```
 
 
-5) delete message
+6) delete message
 
 
 sample request:
